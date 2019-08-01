@@ -5,16 +5,9 @@
       class="card"
       style="width: 50rem; height: 23rem; margin: 0 auto; margin-top: 6rem;"
     >
-      <P>Welcome {{ name }}</P>
+      <h1>Welcome {{ name }}</h1>
+      <br />
       <p>Your signup email is {{ email }}</p>
-      <button
-        type="reset"
-        @click="resetForm(myForm)"
-        style="width: 25%; margin: 0 auto; margin-top: 10rem;"
-        class="btn btn-primary"
-      >
-        CLEAR DATA
-      </button>
       <div class="card-body"></div>
     </div>
   </div>
@@ -23,6 +16,9 @@
 <script>
 import { mapGetters } from "vuex";
 export default {
+  beforeCreate() {
+    this.$store.commit("initialiseStore");
+  },
   data() {
     return {
       dashboard: "This is my dashboard",
@@ -35,6 +31,7 @@ export default {
     this.email = this.getUser.user.email;
     this.name = this.getUser.user.name;
   },
+
   props: {
     msg: String
   }

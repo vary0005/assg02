@@ -28,5 +28,15 @@ export default new Vuex.Store({
     getUser: state => {
       return state.user;
     }
+  },
+  mounted() {
+    if (window.localStorage.getItem("myData") === null) {
+      this.$store.dispatch("FETCH_MY_DATA");
+    } else {
+      this.$store.commit(
+        "FETCH_MY_DATA",
+        JSON.parse(window.localStorage.getItem("myData"))
+      );
+    }
   }
 });

@@ -75,7 +75,6 @@ export default {
   methods: {
     ...mapActions(["myForm"]),
     submitForm() {
-      console.log(this.myFormData);
       this.myForm({ user: this.myFormData });
     }
   }
